@@ -8,14 +8,14 @@ import {
 } from "react-leaflet";
 // import ergänzen nicht vergessen
 
-import data from "./assets/4.5_week.geojson.json";
+//import data from "./assets/4.5_week.geojson.json"; // alt, nicht mehr vwe
 import plates from "./assets/plate_boundaries.geojson.json";
 
 import Button from "@mui/material/Button";
 
-export const Map = ({ setInfo, size }) => {
+export const Map = ({ size, setInfo, quake }) => {
   // Kinder Props
-  const earthquakes = data.features; // Wir benötigen nur den Feature-Array aus den Daten
+  const earthquakes = (quake && quake.features) || []; // prüft ob quake bereits existiert && (logisch und) feautres hat -> || logisch OR [leeres array] alt: data.features Wir benötigen nur den Feature-Array aus den Daten
 
   return (
     <MapContainer
